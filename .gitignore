@@ -1,0 +1,73 @@
+# Next.js build output
+.next/
+out/
+
+# Node modules
+node_modules/
+
+# Environment files — NEVER commit these
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Raw synthetic data — 160MB+, regenerate in 7 min
+scripts/synthetic/output/
+scripts/synthetic/output/stage1_cases.jsonl
+scripts/synthetic/output/generation_summary_200k.json
+scripts/synthetic/progress.json
+
+# NumPy feature matrices — rebuilt during training
+data/cases_*.npy
+data/stage1_cases.jsonl
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.venv/
+venv/
+*.egg
+dist/
+build/
+
+# Hardhat artifacts — generated on compile
+contracts/artifacts/
+contracts/cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Vercel
+.vercel/
+
+# WHAT IS COMMITTED — for team clarity:
+# models/*.onnx                     ← trained model intelligence
+# models/knn_indexes/*.pkl          ← 35 KNN indexes
+# data/case_stats.json              ← pre-computed stats
+# data/case_metadata_sample.json    ← 500 demo cases
+# DEMO_RESPONSES/*.json             ← cached demo responses
+# scripts/synthetic/stage1_structural.py  ← generation script
+# scripts/ml/train_models.py        ← training script
+# contracts/*.sol                   ← smart contracts

@@ -1,0 +1,3 @@
+// This folder holds 35 KNN ball-tree pkl files after Phase 1.3
+// Naming pattern: {case_type}_{city}.pkl
+// Example: divorce_Pune.pkl, inheritance_Mumbai.pkl

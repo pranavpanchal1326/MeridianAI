@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "total_cases": 200000,
+    "generated_at": "2026-04-22T09:52:38.165662Z",
+    "random_seed": 42,
+    "schema_version": "4.0"
+  },
+  "distributions": {
+    "case_type": {
+      "divorce": 116322,
+      "inheritance": 31822,
+      "property": 27698,
+      "business": 16068,
+      "nri": 8090
+    },
+    "city": {
+      "Pune": 25653,
+      "Delhi": 39822,
+      "Hyderabad": 24099,
+      "Ahmedabad": 16240,
+      "Mumbai": 44049,
+      "Bangalore": 32183,
+      "Chennai": 17954
+    },
+    "urgency": {
+      "medium": 89892,
+      "high": 35946,
+      "low": 60247,
+      "critical": 13915
+    },
+    "recommended_path": {
+      "collab": 119735,
+      "mediation": 67790,
+      "court": 12475
+    }
+  },
+  "outcome_stats": {
+    "collab": {
+      "duration_days": {
+        "mean": 93.26,
+        "std": 49.2,
+        "median": 82.0,
+        "p25": 55.0,
+        "p75": 115.0,
+        "p10": 46.0,
+        "p90": 154.0,
+        "min": 46.0,
+        "max": 738.0
+      },
+      "cost_inr": {
+        "mean": 126865.07,
+        "std": 87491.97,
+        "median": 110000.0,
+        "p25": 75500.0,
+        "p75": 154000.0,
+        "p10": 48000.0,
+        "p90": 212500.0,
+        "min": 20000.0,
+        "max": 1531500.0
+      }
+    },
+    "mediation": {
+      "duration_days": {
+        "mean": 192.59,
+        "std": 89.85,
+        "median": 176.0,
+        "p25": 132.0,
+        "p75": 233.0,
+        "p10": 101.0,
+        "p90": 300.0,
+        "min": 47.0,
+        "max": 1495.0
+      },
+      "cost_inr": {
+        "mean": 346558.85,
+        "std": 220776.86,
+        "median": 296000.0,
+        "p25": 217000.0,
+        "p75": 407500.0,
+        "p10": 163000.0,
+        "p90": 562000.0,
+        "min": 20500.0,
+        "max": 4221500.0
+      }
+    },
+    "court": {
+      "duration_days": {
+        "mean": 708.23,
+        "std": 471.19,
+        "median": 572.0,
+        "p25": 393.0,
+        "p75": 893.0,
+        "p10": 284.0,
+        "p90": 1299.0,
+        "min": 52.0,
+        "max": 6323.0
+      },
+      "cost_inr": {
+        "mean": 909270.92,
+        "std": 557882.35,
+        "median": 781500.0,
+        "p25": 574000.0,
+        "p75": 1077000.0,
+        "p10": 432000.0,
+        "p90": 1472000.0,
+        "min": 78000.0,
+        "max": 9293500.0
+      }
+    }
+  },
+  "risk_score_stats": {
+    "mean": 43.82,
+    "std": 15.55,
+    "median": 42.0,
+    "p25": 32.0,
+    "p75": 54.0,
+    "p10": 25.0,
+    "p90": 65.0,
+    "min": 7.0,
+    "max": 95.0
+  },
+  "city_backlogs": {
+    "Mumbai": 18.0,
+    "Delhi": 16.5,
+    "Bangalore": 13.0,
+    "Pune": 11.0,
+    "Hyderabad": 10.5,
+    "Chennai": 9.0,
+    "Ahmedabad": 8.5
+  },
+  "filing_season": {
+    "1": 1.2,
+    "2": 1.05,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 0.95,
+    "7": 0.95,
+    "8": 1.0,
+    "9": 1.05,
+    "10": 1.0,
+    "11": 0.75,
+    "12": 0.65
+  },
+  "validation": {
+    "case_type": {
+      "divorce": {
+        "expected": 0.58,
+        "actual": 0.5816,
+        "diff": 0.0016,
+        "pass": true
+      },
+      "inheritance": {
+        "expected": 0.16,
+        "actual": 0.1591,
+        "diff": 0.0009,
+        "pass": true
+      },
+      "property": {
+        "expected": 0.14,
+        "actual": 0.1385,
+        "diff": 0.0015,
+        "pass": true
+      },
+      "business": {
+        "expected": 0.08,
+        "actual": 0.0803,
+        "diff": 0.0003,
+        "pass": true
+      },
+      "nri": {
+        "expected": 0.04,
+        "actual": 0.0404,
+        "diff": 0.0004,
+        "pass": true
+      }
+    },
+    "city": {
+      "Mumbai": {
+        "expected": 0.22,
+        "actual": 0.2202,
+        "diff": 0.0002,
+        "pass": true
+      },
+      "Delhi": {
+        "expected": 0.2,
+        "actual": 0.1991,
+        "diff": 0.0009,
+        "pass": true
+      },
+      "Bangalore": {
+        "expected": 0.16,
+        "actual": 0.1609,
+        "diff": 0.0009,
+        "pass": true
+      },
+      "Pune": {
+        "expected": 0.13,
+        "actual": 0.1283,
+        "diff": 0.0017,
+        "pass": true
+      },
+      "Hyderabad": {
+        "expected": 0.12,
+        "actual": 0.1205,
+        "diff": 0.0005,
+        "pass": true
+      },
+      "Chennai": {
+        "expected": 0.09,
+        "actual": 0.0898,
+        "diff": 0.0002,
+        "pass": true
+      },
+      "Ahmedabad": {
+        "expected": 0.08,
+        "actual": 0.0812,
+        "diff": 0.0012,
+        "pass": true
+      }
+    },
+    "urgency": {
+      "low": {
+        "expected": 0.3,
+        "actual": 0.3012,
+        "diff": 0.0012,
+        "pass": true
+      },
+      "medium": {
+        "expected": 0.45,
+        "actual": 0.4495,
+        "diff": 0.0005,
+        "pass": true
+      },
+      "high": {
+        "expected": 0.18,
+        "actual": 0.1797,
+        "diff": 0.0003,
+        "pass": true
+      },
+      "critical": {
+        "expected": 0.07,
+        "actual": 0.0696,
+        "diff": 0.0004,
+        "pass": true
+      }
+    },
+    "all_pass": true,
+    "validation_failed": 0
+  }
+}

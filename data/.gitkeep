@@ -1,0 +1,3 @@
+// Committed files after Phase 1.4:
+// case_stats.json (~0.5MB) — pre-computed stats lookup
+// case_metadata_sample.json (~0.5MB) — 500 demo cases

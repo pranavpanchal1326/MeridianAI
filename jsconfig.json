@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@components/*": ["app/components/*"],
+      "@lib/*": ["lib/*"],
+      "@models/*": ["models/*"],
+      "@data/*": ["data/*"],
+      "@contracts/*": ["contracts/*"]
+    }
+  },
+  "include": [
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "scripts/synthetic",
+    "scripts/ml",
+    ".next"
+  ]
+}

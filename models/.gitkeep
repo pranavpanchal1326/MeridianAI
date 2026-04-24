@@ -1,0 +1,5 @@
+// This folder holds trained ONNX model files after Phase 1.2
+// Files committed here: outcome_collab.onnx, outcome_med.onnx,
+// outcome_court.onnx, path_recommender.onnx, risk_scorer.onnx,
+// anomaly_detector.onnx
+// DO NOT add raw data files here. GITIGNORED via .gitignore.

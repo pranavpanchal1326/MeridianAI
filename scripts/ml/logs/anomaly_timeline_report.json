@@ -1,0 +1,24 @@
+{
+  "anomaly_detector": {
+    "false_positive_rate": 0.049,
+    "anomaly_detection_rate_on_edge_cases": 1.0,
+    "serialization_format": "onnx",
+    "note": "IsolationForest successfully exported to ONNX using target_opset={'ai.onnx.ml': 3}."
+  },
+  "phase_timeline": {
+    "setup_mae": 2.170702542970441,
+    "docs_mae": 4.866352993314902,
+    "negotiation_mae": 9.504313166316802,
+    "draft_mae": 5.945255798719619,
+    "filing_mae": 6.366443781931987,
+    "meera_phase_days": {
+      "setup": 5,
+      "docs": 13,
+      "negotiation": 26,
+      "draft": 16,
+      "filing": 15,
+      "total": 77
+    },
+    "phase_sum_vs_outcome_delta": 3.4520263671875
+  }
+}

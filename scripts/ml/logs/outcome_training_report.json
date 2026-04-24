@@ -1,0 +1,32 @@
+{
+  "collab": {
+    "duration_mae": 28.693572743956317,
+    "cost_mae": 42887.67086195152,
+    "onnx_verified": true
+  },
+  "med": {
+    "duration_mae": 48.306825786131355,
+    "cost_mae": 100143.17514752563,
+    "onnx_verified": true
+  },
+  "court": {
+    "duration_mae": 208.04459434450456,
+    "cost_mae": 265458.1010980589,
+    "onnx_verified": true
+  },
+  "calibration_max_deviation": 4.571938472253123e-08,
+  "meera_predictions": {
+    "collab": {
+      "duration": 79.16268009458354,
+      "cost": 103930.59012871688
+    },
+    "med": {
+      "duration": 163.19294029578433,
+      "cost": 282344.79576119955
+    },
+    "court": {
+      "duration": 482.49389994321217,
+      "cost": 700148.3359075942
+    }
+  }
+}
