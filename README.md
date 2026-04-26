@@ -28,7 +28,11 @@
 </div>
 
 ---
-
+> [!IMPORTANT]
+> **UnwindAI is in active development.**
+> Architecture, design system, and data pipeline are stable.
+> ML training and Web3 infrastructure are being implemented.
+> Not production-ready. Hackathon build — Team of 3.
 > **"When your marriage ends, you shouldn't also have to manage 8 professionals, 200 documents, and 50 deadlines.**
 > **UnwindAI handles all of that — so you only make decisions, not chase people."**
 
