@@ -120,3 +120,54 @@ table, [data-tabular] {
     grid-template-columns: 1fr 320px !important;
   }
 }
+
+/* ── SETTLEMENT SIMULATOR RESPONSIVE ───────────────────── */
+.settlement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.shap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.whatif-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .settlement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .whatif-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* On mobile: risk score appears first */
+  .md\:order-2 {
+    order: -1;
+  }
+
+  .md\:grid-cols-dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── FONT VARIANT NUMERIC GLOBAL ─────────────────────────── */
+/* Section 08: tabular-nums on all table/list data */
+[data-tabular] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── DISCLAIMER FOOTER PADDING ───────────────────────────── */
+/* Ensure content never hides behind fixed footer */
+.settlement-content-bottom {
+  padding-bottom: 80px;
+}

@@ -1,18 +1,22 @@
 ﻿// app/api/ml/predict/route.js
-// TEMPLATE — every API route follows this exact pattern
+// Complete ML prediction route
+// DEMO_MODE: returns predict_meera.json in < 50ms
 
 import { NextResponse } from 'next/server'
 import {
   checkDemoMode,
   demoResponse
 } from '@/lib/demo/demoMode'
-import { checkAICallAllowed } from '@/lib/queues/ratelimit'
+import {
+  checkAICallAllowed
+} from '@/lib/ai/ratelimit_updated'
+import { predictOutcome } from '@/lib/ml/predictor'
 import { createSupabaseAdminClient } from '@/lib/db/client'
-// import { predictOutcome } from '@/lib/ml/predictor' // Placeholder
+import { logMLPrediction } from '@/lib/db/cases'
 
 export async function POST(request) {
   try {
-    // ── STEP 1: DEMO_MODE CHECK — ALWAYS FIRST ────────────
+    // STEP 1: DEMO_MODE — always first
     const demo = await checkDemoMode('predict')
     if (demo) {
       return NextResponse.json(
@@ -21,54 +25,55 @@ export async function POST(request) {
       )
     }
 
-    // ── STEP 2: AUTH CHECK ─────────────────────────────────
-    const supabase = createSupabaseAdminClient()
-    // Get case context from request
-    const body = await request.json()
-    const { case_id, features } = body
+    const { case_id, features } = await request.json()
 
-    if (!case_id || !features) {
+    if (!case_id) {
       return NextResponse.json(
-        { error: 'case_id and features required' },
+        { error: 'case_id required' },
         { status: 400 }
       )
     }
 
-    // ── STEP 3: RATE LIMIT CHECK ───────────────────────────
-    await checkAICallAllowed(case_id, null)
+    // Load features from DB if not provided
+    let mlFeatures = features
+    if (!mlFeatures) {
+      const supabase = createSupabaseAdminClient()
+      const { data: profile } = await supabase
+        .from('case_profile')
+        .select('ml_features_json')
+        .eq('case_id', case_id)
+        .single()
 
-    // ── STEP 4: INPUT VALIDATION ───────────────────────────
-    if (!Array.isArray(features) || features.length !== 12) {
+      mlFeatures = profile?.ml_features_json
+    }
+
+    if (!mlFeatures || mlFeatures.length !== 12) {
       return NextResponse.json(
-        { error: 'features must be array of 12 floats' },
-        { status: 400 }
+        { error: 'ML features not available for this case' },
+        { status: 422 }
       )
     }
 
-    // ── STEP 5: CORE PROCESSING ────────────────────────────
-    // const prediction = await predictOutcome(features, case_id)
-    const prediction = { status: 'success', prediction: [0.5, 0.2, 0.3] } // Mocked for template
+    // Run prediction
+    const prediction = await predictOutcome(mlFeatures, case_id)
 
-    // ── STEP 6: RETURN RESPONSE ───────────────────────────
-    return NextResponse.json(prediction, { status: 200 })
+    // Log to ml_prediction_log
+    await logMLPrediction(
+      case_id,
+      'outcome',
+      { features: mlFeatures },
+      prediction,
+      'composite_onnx',
+      null,
+      false
+    )
 
-  } catch (error) {
-    // ── ERROR HANDLING ─────────────────────────────────────
-    if (error.name === 'RateLimitError') {
-      return NextResponse.json(
-        { error: error.message },
-        { status: 429 }
-      )
-    }
-    if (error.name === 'CircuitBreakerError') {
-      return NextResponse.json(
-        { error: 'Service temporarily unavailable.' },
-        { status: 503 }
-      )
-    }
-    console.error('Predict route error:', error.message)
+    return NextResponse.json(prediction)
+
+  } catch (err) {
+    console.error('[Predict API] Error:', err.message)
     return NextResponse.json(
-      { error: 'Unable to generate prediction. Please try again.' },
+      { error: 'Prediction temporarily unavailable.' },
       { status: 500 }
     )
   }
